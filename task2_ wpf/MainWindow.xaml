@@ -1,0 +1,96 @@
+﻿<Window x:Class="task2__wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task2__wpf"
+        mc:Ignorable="d"
+        Title="База Данных автомобилей" Height="500" Width="850" Loaded="Window_Loaded">
+    <Grid>
+        <Menu x:Name="menu" Margin="0,0,0,439">
+            <MenuItem Header="_Фаил" x:Name="File">
+                <MenuItem.Icon>
+                    <Image Source= "C:\Users\Dima\source\repos\laba_3\laba_3\imageres_5.ico"  />
+                </MenuItem.Icon>
+                <MenuItem Name="refresh" Header="Обновить" Click="refresh_Click" />
+
+            </MenuItem>
+
+            <MenuItem Header="Выбрать таблицу" x:Name="Open" >
+                <MenuItem.Icon>
+                    <Image Source= "E:\oop exam\ado net students\task2_ wpf\Icons\1.ico"  />
+                </MenuItem.Icon>
+                <MenuItem Name="Marki" Header="Марки" Click="Marki_Click"/>
+                <MenuItem Name="Concern" Header="Производители" Click="Concern_Click"  />
+                <MenuItem Name="auto" Header="Автомобили" Click="auto_Click"  />
+            </MenuItem>
+            <MenuItem Header="Сортировка" x:Name="Sort" >
+                <MenuItem.Icon>
+                    <Image Source= "E:\oop exam\ado net students\task2_ wpf\Icons\2.ico"  />
+                </MenuItem.Icon>
+                <MenuItem Name="Proizv_sort" Header="По производителю" >
+                    <MenuItem Name="PSA" Header="PSA" Click="PSA_Click" />
+                    <MenuItem Name="GM" Header="General Motors" Click="GM_Click" />
+                    <MenuItem Name="Wolkswagen" Header="Wolkswagen" Click="Wolkswagen_Click"/>
+                </MenuItem>
+                <MenuItem Name="Marki_sort" Header="Пo марке" >
+                    <MenuItem Name="sitroen" Header="Ситроен" Click="sitroen_Click"/>
+                    <MenuItem Name="peugeot" Header="Пежо" Click="peugeot_Click" />
+                    <MenuItem Name="Audi" Header="Ауди" Click="Audi_Click"/>
+                    <MenuItem Name="bentli" Header="Бентли" Click="bentli_Click" />
+                    <MenuItem Name="Buik" Header="Бьюик" Click="Buik_Click"/>
+                    <MenuItem Name="Kadila" Header="Кадилак" Click="Kadila_Click" />
+                    <MenuItem Name="Shevrole" Header="Шевроле" Click="Shevrole_Click"/>
+                    <MenuItem Name="Bugatti" Header="Бугатти" Click="Bugatti_Click" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_О программе" x:Name="About" Click="About_click">
+                <MenuItem.Icon>
+                    <Image Source= "C:\Users\Dima\Pictures\Oxygen-Icons.org-Oxygen-Actions-help-about.ico"  />
+                </MenuItem.Icon>
+            </MenuItem>
+
+        </Menu>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="10,31,0,0" Stroke="Black" Width="166"/>
+
+        <DataGrid Name="AutoGrid" Margin="181,30,25,10" AutoGenerateColumns="True"   />
+        <TextBox Name="model_txb" HorizontalAlignment="Left" Height="23" Margin="16,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+        <TextBox Name="power_txb" HorizontalAlignment="Left" Height="23" Margin="16,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Модель" HorizontalAlignment="Left" Margin="55,61,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label Content="Марка" HorizontalAlignment="Left" Margin="55,120,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.528,3.13"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="14,431,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click_1"/>
+        <TextBox Name="engine_txb" HorizontalAlignment="Left" Height="23" Margin="16,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Тип кузова" HorizontalAlignment="Left" Margin="49,172,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.528,3.13"/>
+        <Label Content="Добавить авто в базу" HorizontalAlignment="Left" Margin="27,30,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="marka_combobox" HorizontalAlignment="Left" Margin="16,146,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="marka_combobox_SelectionChanged">
+            <ComboBoxItem Content="Ауди"/>
+            <ComboBoxItem Content="Бентли"/>
+            <ComboBoxItem Content="Бугатти"/>
+            <ComboBoxItem Content="Бьюик"/>
+            <ComboBoxItem Content="Кадилак"/>
+            <ComboBoxItem Content="Пежо"/>
+            <ComboBoxItem Content="Ситроен"/>
+            <ComboBoxItem Content="Шевроле"/>
+        </ComboBox>
+        <ComboBox Name="type_combobox"  HorizontalAlignment="Left" Margin="16,202,0,0" VerticalAlignment="Top" Width="144" SelectionChanged="type_combobox_SelectionChanged">
+            <ComboBoxItem Content="Универсал"/>
+            <ComboBoxItem Content="Седан"/>
+            <ComboBoxItem Content="Купе"/>
+            <ComboBoxItem Content="Внедорожник"/>
+            <ComboBoxItem Content="Кабриолет"/>
+            <ComboBoxItem Content="Хэтчбек"/>
+            <ComboBoxItem Content="Минивэн"/>
+            <ComboBoxItem Content="Фургон"/>
+            <ComboBoxItem Content="Лимузин"/>
+            <ComboBoxItem Content="Кроссовер"/>
+        </ComboBox>
+        <Label Content="Объем двигателя" HorizontalAlignment="Left" Margin="47,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Мощность" HorizontalAlignment="Left" Margin="55,282,0,0" VerticalAlignment="Top"/>
+        <Label Content="Максимальная скорость" HorizontalAlignment="Left" Margin="16,332,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="speed_txb" HorizontalAlignment="Left" Height="23" Margin="16,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="71,381,0,0" VerticalAlignment="Top" Height="29"/>
+        <TextBox Name="cost_txb" HorizontalAlignment="Left" Height="23" Margin="18,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <Button Content="Очистить" HorizontalAlignment="Left" Margin="87,431,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+
+    </Grid>
+</Window>
